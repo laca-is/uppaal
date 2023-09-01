@@ -15,3 +15,10 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 4. Construção do referido exemplo usando o UPPAAL.
 
 5. Verificação formal de propriedades temporais usando o exemplo anterior.
+
+---------------------------------------------------------------------
+
+# Guia de Instalação do UPPAAL:
+
+
+---------------------------------------------------------------------
