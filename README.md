@@ -22,6 +22,43 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 
 ## Guia de Instalação do UPPAAL
 
+1. Acessar o [link da ferramenta UPPAAL](https://uppaal.org/downloads/)
+
+2. Faça o [registro](https://uppaal.veriaal.dk/academic.html) para obter uma licença acadêmica do UPPAAL.
+
+3. Tendo feito o registro será enviado via e-mail (registrado) as informações da licensa acadêmica obtida.
+
+4. Fazer o download da respectiva distribuição do UPPAAL da versão **5.0**:
+* [Linux](https://download.uppaal.org/uppaal-5.0/uppaal-5.0.0/uppaal-5.0.0-linux64.zip)
+* [Windows](https://download.uppaal.org/uppaal-5.0/uppaal-5.0.0/uppaal-5.0.0-win64.zip)
+* [Mac](https://download.uppaal.org/uppaal-5.0/uppaal-5.0.0/UPPAAL-5.0.0-app.zip)
+
+5. Fazer a respectiva instalação conforme a distribuição escolhida.
+
+6. Mas, antes é necessário acessar o site oficial do UPPAAL e verificar as instruções complementares de instalação.
+
+- no caso em relação à instalação do Java que é necessária para executar a interface gráfica da ferramenta.
+- é necessário ter uma versão **Java >= 11**.
+- veja tais [instruções complementares no site do UPPAAL](https://uppaal.org/downloads/) para proceder com a instalação do java (caso necessário).
+
+7. O passo seguinte é simplesmente executar diretamente o arquivo do UPPAAL: 
+- `uppaal.jar`
+- ou `uppaal.exe`
+- ou `uppaal`
+* apenas, lembre-se que deve ter permissão para executar arquivos no diretório onde os arquivos do UPPAAL foram descompactados.
+
+8. Executando com sucesso o programa. Na primeira vez, irá aparecer a janela gráfica do UPPAAL para ingressar a chave da licença, que foi recebida via e-mail.
+* basta informar a chave e o acesso ao programa será imediatamente liberado.
+
+9. Ainda é possível criar um atalho no computador, para facilmente abrir o UPPAAL nas próximas vezes. Para isso:
+* No Linux, apenas executar o arquivo de script `AddLinks.sh` (que está disponível no mesmo diretório com demais arquivos do UPPAAL)
+* No Windows, apenas executar o script `AddLinks.vbs`
+
+10. Pronto! Agora a ferramenta está devidamente instalada. Para fazer um teste rápido.
+* Abra a ferramenta.
+* Selecione `File`
+* Depois `Open Example`
+* Escolha um exemplo como `Interrupt`, com isso o modelo com os autômatos temporais será aberto na aba `Editor`.
 
 
 ---------------------------------------------------------------------
