@@ -75,14 +75,15 @@ Consultar material de apoio.
 
 ---------------------------------------------------------------------
 
+
 ## Exemplos com representação de veículos autônomos em cenários de trânsito urbano com o UPPAAL
 
-1. Sensor de chuva
+### 1. Sensor de chuva
 
 O primeiro exemplo apresenta um sistema bastante simples para acionar um limpador de parábrisa (quando está chovendo) de um carro .
 Esse exemplo utiliza apenas um único modelo (autômato) com uso simples de variáveis booleanas. Veja o modelo do sistema na figura abaixo.
 
-[Figura 1](imgs/ex-01.png).
+![Figura 1](imgs/ex-01.png).
 
 Definição das variáveis e declarações do sistema.
 
@@ -97,23 +98,122 @@ sensorCarro1 = sensorchuva();
 system sensorCarro1;
 ```
 
-Código do modelo disponível no arquivo .xml [teste].
+Código do modelo disponível em ![Exemplo 1 - xml](????).
+
+### 2. Único autômato (veículo)
+
+Neste segundo exemplo é iustrado um cenário com um VA (Veículo Autônomo) aproximando-se de um cruzamento urbano. O cruzamento pode estar *livre* ou *ocupado*. São usadas apenas variáveis booleanas e um contador (variável) para controlar o acesso do veículo. Veja o modelo do sistema na figura abaixo.
+
+![Figura 2](imgs/ex-01.png).
+
+Definição das variáveis e declarações do sistema.
+
+```java
+bool nocruzamento = false;
+bool livre = true;
+int aguardar= 0;
+
+...
+
+// Place template instantiations here.
+carro1 = VA();
+// List one or more processes to be composed into a system.
+system carro1;
+```
+
+Código do modelo disponível em ![Exemplo 2 - xml](????).
+
+### 3. Veículo e Controlador (canais)
+
+No terceiro exemplo há uma rede de autômatos com dois modelos: um veículo autônomo e um controlar do cruzamento. Então, neste modelo utilizams-se os canais de sincronização para habilitar a comunicação entre os autômatos. O VA deve avisar ao cruzamento quando está *próximo*, por sua vez o cruzamento deve informar ao VA se o cruzamento está *livre* ou *ocupado*. Veja o modelo do sistema na figura abaixo.
+
+![Figura 3](imgs/ex-01.png).
+
+Definição das variáveis e declarações do sistema.
+
+```java
+int aguardar = 0;
+chan proximo, livre, ocupado, longe;
+
+...
+
+// Place template instantiations here.
+carro = VA();
+cruzamento = Controle();
+// List one or more processes to be composed into a system.
+system carro, cruzamento;
+```
+
+Código do modelo disponível em ![Exemplo 3 - xml](????).
+
+### 4. Veículo e Controlador (clocks e diversas instâncias) 
+
+Esse exemplo é uma extensão do anterior. Agora, além dos canais são usados clocks para estabelecer uma restrição temporal do tempo para que o VA verifique novamente o cruzamento quando está ocupado. Veja o modelo do sistema nas figuras abaixo.
+
+![Figura 4 - a](imgs/ex-01.png) e ![Figura 4 - b](imgs/ex-01.png).
+
+Definição dos canais, variáveis e declarações do sistema.
+
+```java
+chan proximo, livre, ocupado, longe;
+
+...
+
+clock aguardar = 0;
+
+...
+
+// Place template instantiations here.
+carro1 = VA();
+carro2 = VA();
+carro3 = VA();
+carro4 = VA();
+cruzamento = Controle();
+// List one or more processes to be composed into a system.
+// system carro1, cruzamento;
+system carro1, carro2, carro3, carro4, cruzamento;
+```
+
+Código do modelo disponível em ![Exemplo 4 - xml](????).
+
+### 5. Exercícios:
+
+#### 5.1 Sensor de chuva com canais e clock
+
+DESC...
+
+#### 5.2 Veículo e placa de pare
+
+DESC...
+
+### 6. Veículo, place de pare e pedestre
+
+DESC.... 
+Veja a definição da restrição temporal do modelo na figura abaixo.
+
+![Figura 6 - a](imgs/ex-01.png).
+
+Veja o modelo do sistema nas figuras abaixo.
+
+![Figura 6 - b](imgs/ex-01.png).
+
+![Figura 6 - c](imgs/ex-01.png).
 
 
-2. Único autômato (veículo)
+Definição dos canais, variáveis e declarações do sistema.
 
-3. Veículo e Controlador (canais)
+```java
+bool chuva = false;
 
-4. Veículo e Controlador (clocks e diversas instâncias) 
+...
 
-5. Exercícios:
+// Place template instantiations here.
+sensorCarro1 = sensorchuva();
+// List one or more processes to be composed into a system.
+system sensorCarro1;
+```
 
-5.1 Sensor de chuva com canais e clock
-
-5.2 Veículo e placa de pare
-
-6. Veículo, place de pare e pedestre
-
+Código do modelo disponível em ![Exemplo 6 - xml](????).
 
 ---------------------------------------------------------------------
     
