@@ -12,11 +12,9 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 
 3. Utilização da ferramenta de model checking UPPALL.
 
-4. Apresentação de exemplos de sistemas autônomos baseado em agentes representando veículos autônomos em cenários de trânsito urbano.
+4. Exemplos com representação de veículos autônomos em cenários de trânsito urbano com o UPPAAL.
 
-5. Construção dos exemplos usando o UPPAAL.
-
-6. Verificação formal de propriedades temporais usando os exemplos anteriores.
+5. Verificação formal de propriedades temporais.
 
 ---------------------------------------------------------------------
 
@@ -67,55 +65,17 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 
 #### Autômato temporal e Lógica temporal
 
-```http
-  GET /api/items
-```
-
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
+Consultar material de apoio.
 
 ---------------------------------------------------------------------
 
-## Utilização do UPPALL
+## Utilização básica do UPPALL
 
-| Cor               | Hexadecimal                                                |
-| ----------------- | ---------------------------------------------------------------- |
-| Cor exemplo       | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Cor exemplo       | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
-| Cor exemplo       | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-| Cor exemplo       | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
-
+Consultar material de apoio.
 
 ---------------------------------------------------------------------
 
-## Exemplos de sistemas autônomos
-
-Contribuições são sempre bem-vindas!
-
-Veja `contribuindo.md` para saber como começar.
-
-Por favor, siga o `código de conduta` desse projeto.
-
-
----------------------------------------------------------------------
-
-## Construção de exemplos com o UPPAAL
+## Exemplos com representação de veículos autônomos em cenários de trânsito urbano com o UPPAAL.
 
 Instale my-project com npm
 
@@ -142,7 +102,7 @@ function App() {
 
 - Curso elaborado pelo professor Gleifer Vaz Alves (UTFPR - Campus Ponta Grossa)
 - e-mail: gleifer@utfpr.edu.br
-- [Site c/ maiores Informações de pesquisa](https://sites.google.com/view/gleifer)
+- [Site com maiores Informações de pesquisa](https://sites.google.com/view/gleifer)
 - Site do lab. de pesquisa [LaCA-IS](https://laca-is.github.io/)
 
 ---------------------------------------------------------------------
