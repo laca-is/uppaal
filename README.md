@@ -75,14 +75,45 @@ Consultar material de apoio.
 
 ---------------------------------------------------------------------
 
-## Exemplos com representação de veículos autônomos em cenários de trânsito urbano com o UPPAAL.
+## Exemplos com representação de veículos autônomos em cenários de trânsito urbano com o UPPAAL
 
-Instale my-project com npm
+1. Sensor de chuva
 
-```bash
-  npm install my-project
-  cd my-project
+O primeiro exemplo apresenta um sistema bastante simples para acionar um limpador de parábrisa (quando está chovendo) de um carro .
+Esse exemplo utiliza apenas um único modelo (autômato) com uso simples de variáveis booleanas. Veja o modelo do sistema na figura abaixo.
+
+[Figura 1](imgs/ex-01.png).
+
+Definição das variáveis e declarações do sistema.
+
+```java
+bool chuva = false;
+
+...
+
+// Place template instantiations here.
+sensorCarro1 = sensorchuva();
+// List one or more processes to be composed into a system.
+system sensorCarro1;
 ```
+
+Código do modelo disponível no arquivo .xml [teste].
+
+
+2. Único autômato (veículo)
+
+3. Veículo e Controlador (canais)
+
+4. Veículo e Controlador (clocks e diversas instâncias) 
+
+5. Exercícios:
+
+5.1 Sensor de chuva com canais e clock
+
+5.2 Veículo e placa de pare
+
+6. Veículo, place de pare e pedestre
+
 
 ---------------------------------------------------------------------
     
