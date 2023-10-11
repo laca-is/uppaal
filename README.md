@@ -65,13 +65,13 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 
 #### Autômato temporal e Lógica temporal
 
-Consultar material de apoio (Slides e Apostila).
+Consultar material de apoio Slides e [Apostila](material-apoio/handout-UPPAAL.pdf)
 
 ---------------------------------------------------------------------
 
 ## Utilização básica do UPPALL
 
-Consultar material de apoio (Slides e Apostila) e também a documentação oficial da ferramenta [UPPAAL](https://docs.uppaal.org/).
+Consultar material de apoio Slides e [Apostila](material-apoio/handout-UPPAAL.pdf) e também a documentação oficial da ferramenta [UPPAAL](https://docs.uppaal.org/).
 
 ---------------------------------------------------------------------
 
@@ -218,7 +218,7 @@ Considerando o exemplo 4 (visto anteriormente) faça o seguinte:
 
 #### 5.3 Exercícios complementares
 
-Implementar no UPPAAL os exemplos da [Apostila](???).
+Implementar no UPPAAL os exemplos da [Apostila](material-apoio/handout-UPPAAL.pdf).
 
 ### 6. Veículo, place de pare e pedestre
 
