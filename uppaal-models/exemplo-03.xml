@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+int aguardar = 0;
+chan proximo, livre, ocupado, longe;</declaration>
+	<template>
+		<name x="5" y="5">VA</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id0" x="-17" y="-136">
+			<name x="-34" y="-170">Longe</name>
+		</location>
+		<location id="id1" x="-17" y="-76">
+			<name x="-8" y="-102">No_Cruzamento</name>
+		</location>
+		<location id="id2" x="-68" y="-8" color="#00ff00">
+			<name x="-102" y="-42">Cruzar</name>
+		</location>
+		<location id="id3" x="34" y="-9" color="#ffff00">
+			<name x="34" y="-34">Aguardar</name>
+		</location>
+		<init ref="id0"/>
+		<transition id="id4">
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-119" y="-110">longe!</label>
+			<nail x="-119" y="-8"/>
+			<nail x="-119" y="-136"/>
+		</transition>
+		<transition id="id5">
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="guard" x="127" y="-51">aguardar &gt; 3</label>
+			<label kind="assignment" x="102" y="-76">aguardar = 0</label>
+			<nail x="136" y="-8"/>
+			<nail x="136" y="-76"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="51" y="-8">aguardar &lt;= 3</label>
+			<label kind="assignment" x="-17" y="17">aguardar++</label>
+			<nail x="0" y="-17"/>
+			<nail x="0" y="25"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="0" y="-68">ocupado?</label>
+		</transition>
+		<transition id="id8">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-85" y="-68">livre?</label>
+		</transition>
+		<transition id="id9">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-17" y="-123">proximo!</label>
+		</transition>
+	</template>
+	<template>
+		<name>Controle</name>
+		<location id="id10" x="-119" y="-42" color="#00ff00">
+			<name x="-102" y="-68">Livre</name>
+		</location>
+		<location id="id11" x="25" y="-42" color="#ffff00">
+			<name x="25" y="-76">Ocupado</name>
+		</location>
+		<location id="id12" x="-212" y="-42">
+			<name x="-238" y="-76">Ocioso</name>
+		</location>
+		<init ref="id12"/>
+		<transition id="id13">
+			<source ref="id10"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-186" y="-9">longe?</label>
+			<nail x="-127" y="8"/>
+			<nail x="-204" y="8"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id12"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-195" y="-59">proximo?</label>
+		</transition>
+		<transition id="id15">
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-68" y="-17">livre!</label>
+			<nail x="8" y="0"/>
+			<nail x="-102" y="0"/>
+		</transition>
+		<transition id="id16">
+			<source ref="id10"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-84" y="-93">ocupado!</label>
+			<nail x="-102" y="-76"/>
+			<nail x="8" y="-76"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+carro = VA();
+cruzamento = Controle();
+// List one or more processes to be composed into a system.
+system carro, cruzamento;
+</system>
+	<queries>
+		<query>
+			<formula>A[] carro.Cruzar imply cruzamento.Livre</formula>
+			<comment>Sempre é verdade que se o carro está cruzando então o cruzamento está livre.</comment>
+			<option key="--learning-method" value="5"/>
+			<result outcome="success" type="quality" timestamp="2023-10-08 17:54:11 -0300">
+				<option key="--learning-method" value="5"/>
+			</result>
+		</query>
+	</queries>
+</nta>

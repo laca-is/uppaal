@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+chan proximo, livre, existe_pedestre, pare, longe;</declaration>
+	<template>
+		<name x="5" y="5">VA</name>
+		<declaration>// Place local declarations here.
+clock c_pare = 0, c_pedestre = 0;</declaration>
+		<location id="id0" x="-51" y="-357">
+			<name x="-68" y="-391">Longe</name>
+		</location>
+		<location id="id1" x="-51" y="-297">
+			<name x="-42" y="-323">No_Cruzamento</name>
+		</location>
+		<location id="id2" x="-127" y="-229" color="#00ff00">
+			<name x="-161" y="-263">Cruzar</name>
+		</location>
+		<location id="id3" x="51" y="-212" color="#ffa500">
+			<name x="59" y="-238">Aguardar_Pare</name>
+			<label kind="invariant" x="25" y="-204">c_pare &lt;= 3</label>
+		</location>
+		<location id="id4" x="-51" y="-153" color="#ffa500">
+			<name x="-119" y="-179">Aguardar_Pedestre</name>
+			<label kind="invariant" x="-110" y="-145">c_pedestre &lt;= 4</label>
+		</location>
+		<init ref="id0"/>
+		<transition id="id5">
+			<source ref="id4"/>
+			<target ref="id1"/>
+			<label kind="guard" x="85" y="-170">c_pedestre &gt;= 2</label>
+			<nail x="170" y="-144"/>
+			<nail x="170" y="-144"/>
+			<nail x="204" y="-144"/>
+			<nail x="204" y="-144"/>
+			<nail x="204" y="-153"/>
+			<nail x="204" y="-305"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id1"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-102" y="-212">existe_pedestre?</label>
+			<label kind="assignment" x="-93" y="-246">c_pedestre := 0</label>
+		</transition>
+		<transition id="id7">
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-153" y="-331">longe!</label>
+			<nail x="-153" y="-229"/>
+			<nail x="-153" y="-357"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="guard" x="102" y="-263">c_pare &gt;= 1</label>
+			<nail x="102" y="-212"/>
+			<nail x="102" y="-297"/>
+		</transition>
+		<transition id="id9">
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-17" y="-289">pare?</label>
+			<label kind="assignment" x="0" y="-272">c_pare :=  0</label>
+		</transition>
+		<transition id="id10">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-119" y="-289">livre?</label>
+		</transition>
+		<transition id="id11">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-51" y="-344">proximo!</label>
+		</transition>
+	</template>
+	<template>
+		<name>ControlePedestre</name>
+		<location id="id12" x="-595" y="-255">
+			<name x="-646" y="-280">Ocioso</name>
+		</location>
+		<location id="id13" x="-476" y="-255">
+			<name x="-552" y="-289">Verifica_Status</name>
+		</location>
+		<location id="id14" x="-382" y="-297">
+			<name x="-382" y="-331">Cruzamento_Livre</name>
+		</location>
+		<location id="id15" x="-382" y="-212">
+			<name x="-408" y="-246">Existe_Pedestre</name>
+		</location>
+		<init ref="id12"/>
+		<transition id="id16">
+			<source ref="id15"/>
+			<target ref="id13"/>
+			<nail x="-382" y="-178"/>
+			<nail x="-476" y="-178"/>
+		</transition>
+		<transition id="id17">
+			<source ref="id14"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-518" y="-340">longe?</label>
+			<nail x="-382" y="-340"/>
+			<nail x="-595" y="-340"/>
+		</transition>
+		<transition id="id18">
+			<source ref="id13"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-450" y="-263">existe_pedestre!</label>
+		</transition>
+		<transition id="id19">
+			<source ref="id13"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="-450" y="-306">livre!</label>
+		</transition>
+		<transition id="id20">
+			<source ref="id12"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-569" y="-255">proximo?</label>
+		</transition>
+	</template>
+	<template>
+		<name>ControlePare</name>
+		<location id="id21" x="-187" y="-34">
+			<name x="-238" y="-59">Ocioso</name>
+		</location>
+		<location id="id22" x="-68" y="-34">
+			<name x="-144" y="-68">Verifica_Status</name>
+		</location>
+		<location id="id23" x="26" y="-76">
+			<name x="26" y="-110">Cruzamento_Livre</name>
+		</location>
+		<location id="id24" x="26" y="9">
+			<name x="0" y="-25">Placa_Pare</name>
+		</location>
+		<init ref="id21"/>
+		<transition id="id25">
+			<source ref="id24"/>
+			<target ref="id22"/>
+			<nail x="26" y="43"/>
+			<nail x="-68" y="43"/>
+		</transition>
+		<transition id="id26">
+			<source ref="id23"/>
+			<target ref="id21"/>
+			<label kind="synchronisation" x="-110" y="-119">longe?</label>
+			<nail x="26" y="-119"/>
+			<nail x="-187" y="-119"/>
+		</transition>
+		<transition id="id27">
+			<source ref="id22"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="-42" y="-42">pare!</label>
+		</transition>
+		<transition id="id28">
+			<source ref="id22"/>
+			<target ref="id23"/>
+			<label kind="synchronisation" x="-42" y="-85">livre!</label>
+		</transition>
+		<transition id="id29">
+			<source ref="id21"/>
+			<target ref="id22"/>
+			<label kind="synchronisation" x="-161" y="-34">proximo?</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+carro1 = VA();
+carro2 = VA();
+carro3 = VA();
+carro4 = VA();
+placaPare = ControlePare();
+pedestre = ControlePedestre();
+// List one or more processes to be composed into a system.
+// system carro1, placaPare, pedestre;
+system carro1, carro2, carro3, carro4, placaPare, pedestre;</system>
+	<queries>
+		<query>
+			<formula>A[] carro1.Cruzar imply placaPare.Cruzamento_Livre</formula>
+			<comment>Propriedade não satisfeita</comment>
+			<result outcome="failure" type="quality" timestamp="2023-10-10 10:26:19 -0300">
+			</result>
+		</query>
+		<query>
+			<formula>A[] carro1.Cruzar imply (placaPare.Cruzamento_Livre || pedestre.Cruzamento_Livre)</formula>
+			<comment>Sempre é verdade que se o carro está cruzando então o cruzamento está livre (de um dos modelos: pedestre ou placa pare)</comment>
+			<option key="--learning-method" value="5"/>
+			<result outcome="success" type="quality" timestamp="2023-10-10 10:26:29 -0300">
+				<option key="--learning-method" value="5"/>
+			</result>
+		</query>
+		<query>
+			<formula>A&lt;&gt; pedestre.Existe_Pedestre imply (carro1.No_Cruzamento || carro2.No_Cruzamento || carro3.No_Cruzamento || carro4.No_Cruzamento)</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2023-10-10 23:53:28 -0300">
+			</result>
+		</query>
+		<query>
+			<formula>A[] pedestre.Existe_Pedestre imply (not carro1.Cruzar || not carro2.Cruzar || not carro3.Cruzar || not carro4.Cruzar)</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2023-10-11 00:17:58 -0300">
+			</result>
+		</query>
+		<query>
+			<formula>A&lt;&gt; carro2.Aguardar_Pare imply (carro2.c_pare &gt;= 1 &amp;&amp; carro2.c_pare &lt;= 3)</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2023-10-11 00:01:22 -0300">
+			</result>
+		</query>
+		<query>
+			<formula>A&lt;&gt; carro3.Aguardar_Pare imply (carro3.c_pedestre &gt;= 2 &amp;&amp; carro3.c_pedestre &lt;= 4)</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2023-10-11 00:03:08 -0300">
+			</result>
+		</query>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2023-10-10 10:26:32 -0300">
+			</result>
+		</query>
+	</queries>
+</nta>

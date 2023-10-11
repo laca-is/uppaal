@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+chan proximo, livre, pare, longe;</declaration>
+	<template>
+		<name x="5" y="5">VA</name>
+		<declaration>// Place local declarations here.
+clock c_pare = 0;</declaration>
+		<location id="id0" x="-17" y="-136">
+			<name x="-34" y="-170">Longe</name>
+		</location>
+		<location id="id1" x="-17" y="-76">
+			<name x="-8" y="-102">No_Cruzamento</name>
+		</location>
+		<location id="id2" x="-68" y="-8" color="#00ff00">
+			<name x="-102" y="-42">Cruzar</name>
+		</location>
+		<location id="id3" x="34" y="-9" color="#ffff00">
+			<name x="34" y="-34">Aguardar</name>
+			<label kind="invariant" x="-8" y="0">c_pare &lt;= 3</label>
+		</location>
+		<init ref="id0"/>
+		<transition id="id4">
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-119" y="-110">longe!</label>
+			<nail x="-119" y="-8"/>
+			<nail x="-119" y="-136"/>
+		</transition>
+		<transition id="id5">
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="guard" x="127" y="-51">c_pare &gt;= 1</label>
+			<nail x="136" y="-8"/>
+			<nail x="136" y="-76"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="0" y="-68">pare?</label>
+			<label kind="assignment" x="-34" y="-51">c_pare :=  0</label>
+		</transition>
+		<transition id="id7">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-85" y="-68">livre?</label>
+		</transition>
+		<transition id="id8">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-17" y="-123">proximo!</label>
+		</transition>
+	</template>
+	<template>
+		<name>ControlePare</name>
+		<location id="id9" x="-187" y="-34">
+			<name x="-238" y="-59">Ocioso</name>
+		</location>
+		<location id="id10" x="-68" y="-34">
+			<name x="-144" y="-68">Verifica_Status</name>
+		</location>
+		<location id="id11" x="26" y="-76">
+			<name x="26" y="-110">Cruzamento_Livre</name>
+		</location>
+		<location id="id12" x="26" y="9">
+			<name x="0" y="-25">Placa_Pare</name>
+		</location>
+		<init ref="id9"/>
+		<transition id="id13">
+			<source ref="id12"/>
+			<target ref="id10"/>
+			<nail x="26" y="43"/>
+			<nail x="-68" y="43"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id11"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-110" y="-119">longe?</label>
+			<nail x="26" y="-119"/>
+			<nail x="-187" y="-119"/>
+		</transition>
+		<transition id="id15">
+			<source ref="id10"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-42" y="-42">pare!</label>
+		</transition>
+		<transition id="id16">
+			<source ref="id10"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-42" y="-85">livre!</label>
+		</transition>
+		<transition id="id17">
+			<source ref="id9"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-161" y="-34">proximo?</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+carro = VA();
+placaPare = ControlePare();
+// List one or more processes to be composed into a system.
+system carro, placaPare;
+</system>
+	<queries>
+		<query>
+			<formula>A[] carro.Cruzar imply placaPare.Cruzamento_Livre</formula>
+			<comment>Sempre é verdade que se o carro está cruzando então o cruzamento está livre.</comment>
+			<option key="--learning-method" value="5"/>
+			<result outcome="success" type="quality" timestamp="2023-10-10 09:52:06 -0300">
+				<option key="--learning-method" value="5"/>
+			</result>
+		</query>
+	</queries>
+</nta>
