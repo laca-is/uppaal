@@ -151,8 +151,7 @@ Código do modelo disponível em [Exemplo 3 - xml](uppaal-models/exemplo-03.xml)
 ### 4. Veículo e Controlador (clocks e diversas instâncias) 
 
 Esse exemplo é uma extensão do anterior. Agora, além dos canais são usados clocks para estabelecer uma restrição temporal do tempo para que o VA verifique novamente o cruzamento quando está ocupado. 
-Esse exemplo e os demais são baseados no cenário ilustrado na 
-![Figura cenário](imgs/scenarios-weit-23.png)
+Esse exemplo e os demais são baseados no cenário ilustrado na ![Figura - cenário](imgs/scenarios-weit-23.png).
 
 Veja o modelo do sistema nas figuras abaixo.
 
@@ -262,7 +261,7 @@ Consultar material de apoio (Apostila) e também a documentação oficial da fer
 
 Considerando o exemplo 6 apresentado anteriormente agora é possível determinar algumas propriedades formais em lógica temporal, para que possam ser verificadas.
 
-Ver [Figura](imgs/ex-06-q-file.png) para detalhes das especificações. E o arquivo [Figura](uppaal-models/exemplo-06.q)
+Ver [Figura](imgs/ex-06-q-file.png) para detalhes das especificações. E o arquivo [Especificações Temporais](uppaal-models/exemplo-06.q).
 
 ---------------------------------------------------------------------
 
