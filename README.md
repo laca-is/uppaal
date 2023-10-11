@@ -65,13 +65,13 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 
 #### Autômato temporal e Lógica temporal
 
-Consultar material de apoio Slides e [Apostila](material-apoio/handout-UPPAAL.pdf)
+Consultar material de apoio [Slides](WEIT-2023-curso-uppaal.pdf) e [Apostila](material-apoio/handout-UPPAAL.pdf)
 
 ---------------------------------------------------------------------
 
 ## Utilização básica do UPPALL
 
-Consultar material de apoio Slides e [Apostila](material-apoio/handout-UPPAAL.pdf) e também a documentação oficial da ferramenta [UPPAAL](https://docs.uppaal.org/).
+Consultar material de apoio [Slides](WEIT-2023-curso-uppaal.pdf) e [Apostila](material-apoio/handout-UPPAAL.pdf) e também a documentação oficial da ferramenta [UPPAAL](https://docs.uppaal.org/).
 
 ---------------------------------------------------------------------
 
