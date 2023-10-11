@@ -65,16 +65,15 @@ Descrição: Neste minicurso será apresentado um modelo formal que representa u
 
 #### Autômato temporal e Lógica temporal
 
-Consultar material de apoio.
+Consultar material de apoio (Slides e Apostila).
 
 ---------------------------------------------------------------------
 
 ## Utilização básica do UPPALL
 
-Consultar material de apoio.
+Consultar material de apoio (Slides e Apostila) e também a documentação oficial da ferramenta [UPPAAL](https://docs.uppaal.org/).
 
 ---------------------------------------------------------------------
-
 
 ## Exemplos com representação de veículos autônomos em cenários de trânsito urbano com o UPPAAL
 
@@ -104,7 +103,7 @@ Código do modelo disponível em ![Exemplo 1 - xml](????).
 
 Neste segundo exemplo é iustrado um cenário com um VA (Veículo Autônomo) aproximando-se de um cruzamento urbano. O cruzamento pode estar *livre* ou *ocupado*. São usadas apenas variáveis booleanas e um contador (variável) para controlar o acesso do veículo. Veja o modelo do sistema na figura abaixo.
 
-![Figura 2](imgs/ex-01.png).
+![Figura 2](imgs/ex-02.png).
 
 Definição das variáveis e declarações do sistema.
 
@@ -125,9 +124,9 @@ Código do modelo disponível em ![Exemplo 2 - xml](????).
 
 ### 3. Veículo e Controlador (canais)
 
-No terceiro exemplo há uma rede de autômatos com dois modelos: um veículo autônomo e um controlar do cruzamento. Então, neste modelo utilizams-se os canais de sincronização para habilitar a comunicação entre os autômatos. O VA deve avisar ao cruzamento quando está *próximo*, por sua vez o cruzamento deve informar ao VA se o cruzamento está *livre* ou *ocupado*. Veja o modelo do sistema na figura abaixo.
+No terceiro exemplo há uma rede de autômatos com dois modelos: um veículo autônomo e um controlar do cruzamento. Então, neste modelo utilizam-se os canais de sincronização para habilitar a comunicação entre os autômatos. O VA deve avisar ao cruzamento quando está *próximo*, por sua vez o cruzamento deve informar ao VA se o cruzamento está *livre* ou *ocupado*. Veja o modelo do sistema na figura abaixo.
 
-![Figura 3](imgs/ex-01.png).
+[Figura 3](imgs/ex-03.png).
 
 Definição das variáveis e declarações do sistema.
 
@@ -146,11 +145,18 @@ system carro, cruzamento;
 
 Código do modelo disponível em ![Exemplo 3 - xml](????).
 
+**Observação**: considere o modelo na [Figura 3 - erro](imgs/ex-03-deadlock.png) perceba que esse modelo gera um deadlock.
+
+
 ### 4. Veículo e Controlador (clocks e diversas instâncias) 
 
-Esse exemplo é uma extensão do anterior. Agora, além dos canais são usados clocks para estabelecer uma restrição temporal do tempo para que o VA verifique novamente o cruzamento quando está ocupado. Veja o modelo do sistema nas figuras abaixo.
+Esse exemplo é uma extensão do anterior. Agora, além dos canais são usados clocks para estabelecer uma restrição temporal do tempo para que o VA verifique novamente o cruzamento quando está ocupado. 
+Esse exemplo e os demais são baseados no cenário ilustrado na 
+![Figura cenário](imgs/scenarios-weit-23.png)
 
-![Figura 4 - a](imgs/ex-01.png) e ![Figura 4 - b](imgs/ex-01.png).
+Veja o modelo do sistema nas figuras abaixo.
+
+[Figura 4 - a](imgs/ex-04-a.png) e [Figura 4 - b](imgs/ex-04-b.png).
 
 Definição dos canais, variáveis e declarações do sistema.
 
@@ -174,30 +180,56 @@ cruzamento = Controle();
 system carro1, carro2, carro3, carro4, cruzamento;
 ```
 
-Código do modelo disponível em ![Exemplo 4 - xml](????).
+Note que neste exemplo foram definidas quatro instâncias para o modelo do veículo.
+Assim, quando é feita a simulação do modelo é possível perceber a comunicação entre os elementos, ver  
+[Exemplo 4 - diagrama](imgs/ex-04-diagrama-seq.png).
+
+
+Código do modelo disponível em [Exemplo 4 - xml](????).
 
 ### 5. Exercícios:
 
 #### 5.1 Sensor de chuva com canais e clock
 
-DESC...
+Considerando o exemplo 1 (sensor de chuva) faça o seguinte:
+##### a.) Crie um novo modelo (autômato) que represente um recurso que informe via canais de sincronização se está chovendo ou não.
+
+##### b.) Verifique quais definições de variáveis e canais serão necessárias.
+
+##### c.) Adicione também uma restrição temporal para que o dispositivo seja acionado em uma janela de tempo entre 2 e 5 unidades de tempo em caso de *chuva moderada*.
+
+##### d.) Assim o modelo devo considerar três possibilidades: **i**. sem chuva; 
+**ii**. chuva moderada;
+**iii** chuva.
+
+##### e.) Elabore propriedades que sejam verificadas formalmente. Sugestão: *Sempre é verdade que quando está chovendo, então o dispositivo será ativado*.
 
 #### 5.2 Veículo e placa de pare
 
-DESC...
+Considerando o exemplo 4 (visto anteriormente) faça o seguinte:
+
+##### a.) Altere o exemplo para que agora exista um recurso que informe se há ou não uma placa de **Pare** no cruzamento. Caso exista uma placa então o VA tem uma janela de 1 até 3 unidades de tempo para verificar novamente o status do cruzamento.
+
+##### b.) Identifique o que necessário mudar em termos de variáveis, canais e instâncias.
+
+##### c.) Execute as devidas simulações para averiguar o devido funcionamento do modelo.
+
+##### d.) Elabore propriedades formais para verificar o funcionamento do modelo. Sugestão: *Sempre é verdade que quando o VA passa pelo cruzamento, então o cruzamento está livre*.
+
+#### 5.3 Exercícios complementares
+
+Implementar no UPPAAL os exemplos da [Apostila](???).
 
 ### 6. Veículo, place de pare e pedestre
 
-DESC.... 
+Continuando com o mesmo cenário da [Figura cenário](imgs/scenarios-weit-23.png), agora o VA quando chegar no cruzamento deve verificar se há uma placa de pare no cruzamento ou se há um pedestre ou se o cruzamento está livre.  
 Veja a definição da restrição temporal do modelo na figura abaixo.
 
-![Figura 6 - a](imgs/ex-01.png).
+[Figura 6 - a](imgs/ex-06-d.png).
 
 Veja o modelo do sistema nas figuras abaixo.
 
-![Figura 6 - b](imgs/ex-01.png).
-
-![Figura 6 - c](imgs/ex-01.png).
+[Figura 6 - b](imgs/ex-06-a.png)  e  [Figura 6 - c](imgs/ex-06-b.png).
 
 
 Definição dos canais, variáveis e declarações do sistema.
@@ -213,19 +245,20 @@ sensorCarro1 = sensorchuva();
 system sensorCarro1;
 ```
 
+Neste exemplo foram estabelecidas quatro instâncias do VA.
+Quando é feita a simulação do modelo é possível perceber a utilização dos canais de sincronização conforme a disputa de recursos que ocorre entre as instâncias do VA e os dois recursos da rede de autômatos: *place pare* e *pedestre*.
+Ver [Exemplo 6 - diagrama](imgs/ex-06-c.png).
+
+
+Além disso, a Figura [Exemplo 6 - cobertura](imgs/ex-06-e-coverage.png) ilustra gráficos de cobertura dos nós e arestas dos autômatos do sistema.
+
 Código do modelo disponível em ![Exemplo 6 - xml](????).
 
 ---------------------------------------------------------------------
     
 ## Verificação formal de propriedades
 
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
+Consultar material de apoio (Apostila) e também a documentação oficial da ferramenta [UPPAAL Verificador](https://docs.uppaal.org/gui-reference/verifier/).
 
 ---------------------------------------------------------------------
 
