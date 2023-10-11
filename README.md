@@ -97,7 +97,7 @@ sensorCarro1 = sensorchuva();
 system sensorCarro1;
 ```
 
-Código do modelo disponível em ![Exemplo 1 - xml](????).
+Código do modelo disponível em [Exemplo 1 - xml](uppaal-models/exemplo-01.xml).
 
 ### 2. Único autômato (veículo)
 
@@ -120,7 +120,7 @@ carro1 = VA();
 system carro1;
 ```
 
-Código do modelo disponível em ![Exemplo 2 - xml](????).
+Código do modelo disponível em [Exemplo 2 - xml](uppaal-models/exemplo-02.xml).
 
 ### 3. Veículo e Controlador (canais)
 
@@ -143,7 +143,7 @@ cruzamento = Controle();
 system carro, cruzamento;
 ```
 
-Código do modelo disponível em ![Exemplo 3 - xml](????).
+Código do modelo disponível em [Exemplo 3 - xml](uppaal-models/exemplo-03.xml).
 
 **Observação**: considere o modelo na [Figura 3 - erro](imgs/ex-03-deadlock.png) perceba que esse modelo gera um deadlock.
 
@@ -185,7 +185,7 @@ Assim, quando é feita a simulação do modelo é possível perceber a comunica�
 [Exemplo 4 - diagrama](imgs/ex-04-diagrama-seq.png).
 
 
-Código do modelo disponível em [Exemplo 4 - xml](????).
+Código do modelo disponível em [Exemplo 4 - xml](uppaal-models/exemplo-04.xml).
 
 ### 5. Exercícios:
 
@@ -252,13 +252,17 @@ Ver [Exemplo 6 - diagrama](imgs/ex-06-c.png).
 
 Além disso, a Figura [Exemplo 6 - cobertura](imgs/ex-06-e-coverage.png) ilustra gráficos de cobertura dos nós e arestas dos autômatos do sistema.
 
-Código do modelo disponível em ![Exemplo 6 - xml](????).
+Código do modelo disponível em [Exemplo 6 - xml](uppaal-models/exemplo-06.xml).
 
 ---------------------------------------------------------------------
     
 ## Verificação formal de propriedades
 
 Consultar material de apoio (Apostila) e também a documentação oficial da ferramenta [UPPAAL Verificador](https://docs.uppaal.org/gui-reference/verifier/).
+
+Considerando o exemplo 6 apresentado anteriormente agora é possível determinar algumas propriedades formais em lógica temporal, para que possam ser verificadas.
+
+Ver [Figura](imgs/ex-06-q-file.png) para detalhes das especificações. E o arquivo [Figura](uppaal-models/exemplo-06.q)
 
 ---------------------------------------------------------------------
 
